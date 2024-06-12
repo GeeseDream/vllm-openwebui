@@ -24,17 +24,7 @@ git clone https://github.com/GeeseDream/vllm-openwebui
 cd vllm-openwebui
 ```
 
-### 2. Configure Environment Variables
-
-Edit the `.env` file with your specific settings if needed. By default, it's configured with:
-
-- `VLLM_OPENAI_IMAGE`: The Docker image for VLLM with CUDA support.
-- `VLLM_OPENAI_API_PORT`: Port exposed for VLLM API access.
-- `MODEL_NAME`: The name of the model to be loaded by VLLM, currently set to Qwen/Qwen2-7B-Instruct-AWQ.
-- `OPENAI_API_KEY`: Your API key (replace the placeholder with a secure key).
-- `OPEN_WEBUI_PORT`: Port for accessing the Open-WebUI.
-
-### 3. Start the Services
+### 2. Start the Services
 
 Run the following command to start both services defined in `docker-compose.yml`:
 
