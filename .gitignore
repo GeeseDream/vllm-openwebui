@@ -1,0 +1,8 @@
+open-webui/
+cache/
+docs/
+hub/
+uploads/
+vector_db/
+webui.db
+config.json
