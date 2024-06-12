@@ -1,52 +1,30 @@
 # VLLM + Open-WebUI Deployment Guide
 
-This repository contains the necessary configuration to deploy a high-performance language model inference service using [VLLM](https://github.com/vllm-project/vllm) and a user-friendly web interface with [Open-WebUI](https://github.com/open-webui/open-webui). The setup is designed to leverage NVIDIA GPUs for efficient computation and provide an interactive experience through a web-based UI.
+### 步骤：
 
-## Overview
+1. **安装Docker**：确保你的系统上已经安装了Docker。如果没有，请从[Docker官网](https://www.docker.com/get-started)下载并安装。
 
-- **VLLM Service (`vllm-openai`)**: A Dockerized service based on the VLLM framework, which is optimized for running large transformer models like the ones from Hugging Face. It serves as the backend for generating text completions and responses.
-  
-- **Open-WebUI**: A web frontend that communicates with the VLLM service to provide a seamless user interaction experience. Users can input prompts and receive model-generated outputs through this intuitive interface.
+2. **拉取和切换目录**：
+   ```bash
+   git clone https://github.com/GeeseDream/vllm-openwebui.git
+   cd vllm-openwebui
+   ```
 
-## Prerequisites
+3. **启动服务**：使用Docker Compose启动服务：
+   ```bash
+   docker-compose up -d
+   ```
 
-1. **Docker**: Ensure Docker is installed on your system. You can download it from the [official Docker website](https://www.docker.com/get-started).
-2. **Docker Compose**: Docker Compose is required for managing multi-container Docker applications. Install or update it following the [official guide](https://docs.docker.com/compose/install/).
-3. **NVIDIA GPU**: A system equipped with one or more NVIDIA GPUs and the appropriate drivers installed.
-4. **CUDA & cuDNN**: Ensure your system has CUDA and cuDNN compatible with the specified VLLM image version.
+   这个命令会：
+   - 启动基于VLLM框架的模型服务，充分利用GPU性能。
+   - 启动Open-WebUI作为前端界面，连接到模型服务提供用户交互。
 
-## Deployment Steps
+4. **访问Open-WebUI**：通过浏览器访问 `http://localhost:3000` 或者 `http://your-host-ip:3000` 来打开Open-WebUI界面。
 
-### 1. Clone the Repository
+### 注意事项：
 
-```bash
-git clone https://github.com/GeeseDream/vllm-openwebui
-cd vllm-openwebui
-```
+- **API密钥安全**：确保替换掉`OPENAI_API_KEY`为一个安全的值，并避免将实际的密钥暴露在公共代码库或不安全的环境中。
 
-### 2. Start the Services
+### 遇到问题时：
 
-Run the following command to start both services defined in `docker-compose.yml`:
-
-```bash
-docker-compose up -d
-```
-
-This will:
-- Deploy the VLLM service with GPU resources allocated.
-- Start the Open-WebUI, which will connect to the VLLM service internally.
-
-### 4. Accessing Open-WebUI
-
-Open your browser and navigate to `http://localhost:3000` (or `${OPEN_WEBUI_PORT}` as defined in `.env`). You should see the Open-WebUI interface ready for interaction.
-
-## Note on Security
-
-- **API Key**: Ensure you replace the placeholder `OPENAI_API_KEY` with a secure value. Never expose your actual keys in public repositories or share them insecurely.
-- **Data Privacy**: Remember that any data processed through this setup will be subject to the privacy policies and security practices implemented by VLLM and Open-WebUI.
-
-## Troubleshooting
-
-For any issues during deployment, refer to the logs using `docker logs <container_name>` or consult the respective project documentations for [VLLM](https://github.com/vllm-project/vllm) and [Open-WebUI](https://github.com/open-webui/open-webui).
-
-Enjoy exploring the capabilities of advanced language models through this efficient and user-friendly setup!
+- **检查日志**：如果遇到任何问题，请使用 `docker logs <container_name>` 命令查看容器的日志。
