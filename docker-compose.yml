@@ -12,12 +12,12 @@ services:
       - "${VLLM_OPENAI_API_PORT}:8000"
     volumes:
       - .:/root/.cache/huggingface
-    command: --model ${MODEL_NAME} --api-key ${OPENAI_API_KEY}
+    command: --model ${MODEL_NAME} --api-key ${API_KEY}
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     environment:
       - OPENAI_API_BASE_URL=http://vllm-openai:8000/v1
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_API_KEY=${API_KEY}
     ports:
       - "${OPEN_WEBUI_PORT}:8080"
     volumes:
