@@ -8,13 +8,15 @@ services:
               count: all
               capabilities: [ gpu ]
     image: ${VLLM_OPENAI_IMAGE}
+    environment:
+      - HF_ENDPOINT=${HF_MIRROR:-https://huggingface.co}
     ports:
       - "${VLLM_OPENAI_API_PORT}:8000"
     volumes:
       - .:/root/.cache/huggingface
     command: --model ${MODEL_NAME} --api-key ${API_KEY}
   open-webui:
-    image: ghcr.io/open-webui/open-webui:main
+    image: ${OPEN_WEBUI_IMAGE}
     environment:
       - OPENAI_API_BASE_URL=http://vllm-openai:8000/v1
       - OPENAI_API_KEY=${API_KEY}
