@@ -14,7 +14,7 @@
    ```bash
    docker-compose up -d
    ```
-
+   国内可以编辑.env文件打开HF_MIRROR注释，加速下载模型文件。
    这个命令会：
    - 启动基于VLLM框架的模型服务，充分利用GPU性能。
    - 启动Open-WebUI作为前端界面，连接到模型服务提供用户交互。
